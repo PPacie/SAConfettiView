@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-public class SAConfettiView: UIView {
+@objc public class SAConfettiView: UIView {
 
     public enum ConfettiType {
         case Confetti
@@ -46,7 +46,7 @@ public class SAConfettiView: UIView {
         active = false
     }
 
-    public func startConfetti() {
+    @objc public func startConfetti() {
         emitter = CAEmitterLayer()
 
         emitter.emitterPosition = CGPoint(x: frame.size.width / 2.0, y: 0)
@@ -63,7 +63,7 @@ public class SAConfettiView: UIView {
         active = true
     }
 
-    public func stopConfetti() {
+    @objc public func stopConfetti() {
         emitter?.birthRate = 0
         active = false
     }
