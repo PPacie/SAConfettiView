@@ -68,7 +68,7 @@ import QuartzCore
         active = false
     }
 
-    func imageForType(type: ConfettiType) -> UIImage? {
+        func imageForType(type: ConfettiType) -> UIImage? {
 
         var fileName: String!
 
@@ -85,12 +85,12 @@ import QuartzCore
             return customImage
         }
 
-        let path = NSBundle(forClass: SAConfettiView.self).pathForResource("SAConfettiView", ofType: "bundle")
-        let bundle = NSBundle(path: path!)
-        let imagePath = bundle?.pathForResource(fileName, ofType: "png")
+        let path = Bundle(for: SAConfettiView.self).path(forResource: "SAConfettiView", ofType: "bundle")
+        let bundle = Bundle(path: path!)
+        let imagePath = bundle?.path(forResource:fileName, ofType: "png")
         let url = NSURL(fileURLWithPath: imagePath!)
-        let data = NSData(contentsOfURL: url)
-        if let data = data {
+        let data = NSData(contentsOf: url as URL)
+        if let data = data as Data? {
             return UIImage(data: data)!
         }
         return nil
@@ -101,7 +101,7 @@ import QuartzCore
         confetti.birthRate = 6.0 * intensity
         confetti.lifetime = 14.0 * intensity
         confetti.lifetimeRange = 0
-        confetti.color = color.CGColor
+        confetti.color = color.cgColor
         confetti.velocity = CGFloat(350.0 * intensity)
         confetti.velocityRange = CGFloat(80.0 * intensity)
         confetti.emissionLongitude = CGFloat(M_PI)
@@ -110,7 +110,7 @@ import QuartzCore
         confetti.spinRange = CGFloat(4.0 * intensity)
         confetti.scaleRange = CGFloat(intensity)
         confetti.scaleSpeed = CGFloat(-0.1 * intensity)
-        confetti.contents = imageForType(type)!.CGImage
+        confetti.contents = imageForType(type: type)!.cgImage
         return confetti
     }
 
