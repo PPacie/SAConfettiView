@@ -55,7 +55,7 @@ import QuartzCore
 
         var cells = [CAEmitterCell]()
         for color in colors {
-            cells.append(confettiWithColor(color))
+            cells.append(confettiWithColor(color: color))
         }
 
         emitter.emitterCells = cells
